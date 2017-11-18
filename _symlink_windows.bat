@@ -47,7 +47,7 @@ set extensionsToLink[3]=Renameuser
 set extensionsToLink[4]=VisualEditor
 set extensionsToLink[5]=WikiEditor
 
-rem The extensions that need to be symlinked to the target directories extensions folder
+rem The extensions that need to be symlinked to the target directories skins folder
 set skinsToLink[0]=Vector
 set skinsToLink[1]=MonoBook
 set skinsToLink[2]=Modern
@@ -82,7 +82,7 @@ if defined extensionsToLink[%x%] (
 )
 
 echo.
-echo Making symbolic links for customization extensions:
+echo Making symbolic links for customization skins:
 set x=0
 
 :SymSkinsLoop
@@ -97,4 +97,3 @@ echo.
 echo Done!
 
 :CancelSymlinking
-pause >nul

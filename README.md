@@ -28,9 +28,9 @@ Before you do anything, please run ```composer install``` in a command prompt/sh
 
 
 ### 3.1 Linux
-Use the `_symlink_linux.sh` to symlink the contents of this repo to the wiki project.
+Follow the instructions after running `_symlink_linux.sh` to symlink the contents of this repo to the wiki project.
 
-_I have not tested if this bash script works_
+_I have not tested if this bash script works. The batch script for Linux is a bit crude at the moment, any help to clean it up is appreciated_
 
 ### 3.2 Windows
 
