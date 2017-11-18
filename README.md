@@ -87,7 +87,7 @@ $wgExtraNamespaces[NS_TEACHERS] = "Docent";
 # Lockdown extension + config
 #
 
-wfLoadExtension( 'Lockdown' );
+require_once( "$IP/extensions/Lockdown/Lockdown.php" );
 
 # Prevent inclusion of pages from that namespace
 $wgNonincludableNamespaces[] = NS_TEACHERS;
