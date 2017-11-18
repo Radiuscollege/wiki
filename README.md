@@ -24,7 +24,21 @@ Before you do anything, please run ```composer install``` in a command prompt/sh
 
 (You can get composer for your system here: https://getcomposer.org/)
 
-## MediaWiki
+## 3. Symlink these customizations
+
+
+### 3.1 Linux
+Use the `_symlink_linux.sh` to symlink the contents of this repo to the wiki project.
+
+_I have not tested if this bash script works_
+
+### 3.2 Windows
+
+Use the `_symlink_windows.bat` to symlink the contents of this repo to the wiki project.
+
+_The batch script for Windows has not yet been made. Contributions would be great!_
+
+## 4. Configuring MediaWiki
 
 Without a LocalSettings.php MediaWiki will prompt for configuration. Follow the steps and configure with your database/server details.
 
@@ -37,6 +51,8 @@ $wgAmoLoginClientClientID = 0; // Make sure to change 0 to the client id of your
 $wgAmoLoginClientClientSecret = '<PUT AMO LOGIN SECRET KEY HERE>'; // Put the secret string in this variable.
 require_once("AMOSettings.php");
 ```
+
+Note that there are 2 global variables related to the AMO Login OpenID connect. Make sure you get the values for these variables by creating an app at login.amo.rocks (you can only do this if you have a teacher-account)
 
 # Contributing
 
