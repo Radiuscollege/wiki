@@ -34,9 +34,9 @@ _I have not tested if this bash script works_
 
 ### 3.2 Windows
 
-Use the `_symlink_windows.bat` to symlink the contents of this repo to the wiki project.
+Follow the instructions after running `_symlink_windows.bat` to symlink the contents of this repo to the wiki project.
 
-_The batch script for Windows has not yet been made. Contributions would be great!_
+_The batch script for Windows is a bit crude at the moment, any help to clean it up is appreciated._
 
 ## 4. Configuring MediaWiki
 
