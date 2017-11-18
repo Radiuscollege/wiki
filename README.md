@@ -16,21 +16,27 @@ Clone the MediaWiki Core into the publicly accessible root of your webserver by 
 
 Official: `git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git .`
 
-Official Mirror: `git clone https://github.com/wikimedia/mediawiki .
+Official Mirror: `git clone https://github.com/wikimedia/mediawiki.git .`
 
 _(Alternatively you could switch to a stable branch instead of the master)_
 
-## 2. Symlink these customizations
+## 2. Get these customizations
 
+To get these customizations, clone the repo to a folder on your server like so:
+`git clone https://github.com/Radiuscollege/wiki.git . --recursive`
 
-### 2.1 Linux
+_--recursive will make it so the subrepo's also get cloned_
+
+After cloning the repo and subrepo's you will have to symlink these files to the wiki project. See the following chapters for that.
+
+### 2.1 Symlink on Linux
 Follow the instructions after running `_symlink_linux.sh` to symlink the contents of this repo to the wiki project.
 
 Note: you might have to run the bash script using sudo, e.g: `sudo bash ./_symlink_linux.sh`
 
 _The batch script for Linux is a bit crude at the moment, any help to clean it up is appreciated_
 
-### 2.2 Windows
+### 2.2 Symlink Windows
 
 Follow the instructions after running `_symlink_windows.bat` to symlink the contents of this repo to the wiki project.
 

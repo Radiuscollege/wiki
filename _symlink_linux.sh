@@ -1,5 +1,7 @@
 #!/bin/bash
 
+bashDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/"
+
 printf "What is the relative/full path of the target directory to symlink to (trailed with a /)? [../]: "
 read targetDirectory
 printf "\nWhat is the extensions directory called? [extensions/]: "
@@ -52,8 +54,8 @@ printf "Making symbolic links for customization files:\n"
 for i in "${filesToLink[@]}"
 do
    : 
-   printf "ln -sf \"$i\" \"$targetDirectory$i\"\n"
-   ln -sf "$i" "$targetDirectory$i"
+   printf "ln -sf \"$bashDir$i\" \"$bashDir$targetDirectory$i\"\n"
+   ln -sf "$bashDir$i" "$bashDir$targetDirectory$i"
 done
 
 printf "\n"
@@ -62,8 +64,8 @@ printf "Making symbolic links for customization extensions:\n"
 for i in "${extensionsToLink[@]}"
 do
    : 
-   printf "ln -sf \"$i\" \"$targetDirectory$extensionsDir$i\"\n"
-   ln -sf "$i" "$targetDirectory$extensionsDir$i"
+   printf "ln -sf \"$bashDir$extensionsDir$i\" \"$bashDir$targetDirectory$extensionsDir$i\"\n"
+   ln -sf "$bashDir$extensionsDir$i" "$bashDir$targetDirectory$extensionsDir$i"
 done
 
 printf "\n"
@@ -72,8 +74,8 @@ printf "Making symbolic links for customization skins:\n"
 for i in "${skinsToLink[@]}"
 do
    : 
-   printf "ln -sf \"$i\" \"$targetDirectory$skinsDir$i\"\n"
-   ln -sf "$i" "$targetDirectory$skinsDir$i"
+   printf "ln -sf \"$bashDir$skinsDir$i\" \"$bashDir$targetDirectory$skinsDir$i\"\n"
+   ln -sf "$bashDir$skinsDir$i" "$bashDir$targetDirectory$skinsDir$i"
 done
 
 printf "\n\nDone!"
