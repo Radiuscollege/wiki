@@ -52,6 +52,7 @@ for i in "${filesToLink[@]}"
 do
    : 
    printf "ln -sf \"$i\" \"$targetDirectory$i\"\n"
+   ln -sf "$i" "$targetDirectory$i"
 done
 
 printf "\n"
@@ -60,7 +61,8 @@ printf "Making symbolic links for customization extensions:\n"
 for i in "${extensionsToLink[@]}"
 do
    : 
-   printf "ln -sf \"$i\" \"$targetDirectory$i\"\n"
+   printf "ln -sf \"$i\" \"$targetDirectory$extensionsDir$i\"\n"
+   ln -sf "$i" "$targetDirectory$extensionsDir$i"
 done
 
 printf "\n"
@@ -69,7 +71,8 @@ printf "Making symbolic links for customization skins:\n"
 for i in "${skinsToLink[@]}"
 do
    : 
-   printf "ln -sf \"$i\" \"$targetDirectory$i\"\n"
+   printf "ln -sf \"$i\" \"$targetDirectory$skinsDir$i\"\n"
+   ln -sf "$i" "$targetDirectory$skinsDir$i"
 done
 
 printf "\n\nDone!"

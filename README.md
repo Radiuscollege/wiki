@@ -26,7 +26,9 @@ _(Alternatively you could switch to a stable branch instead of the master)_
 ### 2.1 Linux
 Follow the instructions after running `_symlink_linux.sh` to symlink the contents of this repo to the wiki project.
 
-_I have not tested if this bash script works. The batch script for Linux is a bit crude at the moment, any help to clean it up is appreciated_
+Note: you might have to run the bash script using sudo, e.g: `sudo bash ./_symlink_linux.sh`
+
+_The batch script for Linux is a bit crude at the moment, any help to clean it up is appreciated_
 
 ### 2.2 Windows
 
