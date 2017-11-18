@@ -48,12 +48,12 @@ Edit LocalSettings.php and put the following lines at the bottom of it:
 
 ```php
 #
-# ParserFunctions Extension + Config
+# Useful third-party extensions
 #
 
-# For if statements (and more) inside articles
+wfLoadExtension( 'Renameuser' );
+wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'ParserFunctions' );
-
 
 #
 # AmoClient Extension + Config
@@ -82,6 +82,12 @@ define("NS_TEACHERS", 1600);
 
 # Add namespaces.
 $wgExtraNamespaces[NS_TEACHERS] = "Docent";
+
+#
+# Lockdown extension + config
+#
+
+wfLoadExtension( 'Lockdown' );
 
 # Prevent inclusion of pages from that namespace
 $wgNonincludableNamespaces[] = NS_TEACHERS;
