@@ -1,3 +1,5 @@
+#!/bin/bash
+
 printf "What is the relative/full path of the target directory to symlink to (trailed with a /)? [../]: "
 read targetDirectory
 printf "\nWhat is the extensions directory called? [extensions/]: "

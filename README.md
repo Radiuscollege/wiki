@@ -12,39 +12,41 @@ In this chapter we'll describe how to setup a MediaWiki instance containing the 
 
 ## 1. Getting the MediaWiki Core
 
-Clone the MediaWiki Core into the publicly accessible root of your webserver from:
+Clone the MediaWiki Core into the publicly accessible root of your webserver by going to the root directory and running:
 
-Official: `https://gerrit.wikimedia.org/r/p/mediawiki/core.git`
+Official: `git clone https://gerrit.wikimedia.org/r/p/mediawiki/core.git .`
 
-Official Mirror: `https://github.com/wikimedia/mediawiki`
+Official Mirror: `git clone https://github.com/wikimedia/mediawiki .
 
-## 2. Important: install the dependencies
+_(Alternatively you could switch to a stable branch instead of the master)_
 
-Before you do anything, please run ```composer install``` in a command prompt/shell inside the root of the wiki project to install the required dependencies.
-
-(You can get composer for your system here: https://getcomposer.org/)
-
-## 3. Symlink these customizations
+## 2. Symlink these customizations
 
 
-### 3.1 Linux
+### 2.1 Linux
 Follow the instructions after running `_symlink_linux.sh` to symlink the contents of this repo to the wiki project.
 
 _I have not tested if this bash script works. The batch script for Linux is a bit crude at the moment, any help to clean it up is appreciated_
 
-### 3.2 Windows
+### 2.2 Windows
 
 Follow the instructions after running `_symlink_windows.bat` to symlink the contents of this repo to the wiki project.
 
 _The batch script for Windows is a bit crude at the moment, any help to clean it up is appreciated._
 
+## 3. Important: install the dependencies
+
+Before you do anything else: run ```composer install``` in a command prompt/shell inside the root of the wiki project to install the required dependencies (for MediaWiki and also the customizations).
+
+(You can get composer for your system here: https://getcomposer.org/)
+
 ## 4. Configuring MediaWiki
 
-Without a LocalSettings.php MediaWiki will prompt for configuration. Follow the steps and configure with your database/server details.
+Without a `LocalSettings.php` MediaWiki will prompt for configuration. Follow the steps and configure with your database/server details.
 
-After you have successfully completed configuration, you will be able to download a LocalSettings.php. Put this file in the root of the wiki project.
+After you have successfully completed configuration, you will be able to download a `LocalSettings.php`. Put this file in the root of the wiki project.
 
-Edit LocalSettings.php and put the following lines at the bottom of it:
+Edit `LocalSettings.php` and put the following lines at the bottom of it:
 
 ```php
 #
@@ -160,6 +162,16 @@ $wgVirtualRestConfig['modules']['parsoid'] = array(
 ```
 
 Note that there are 2 global variables related to the AMO Login OpenID connect. Make sure you get the values for these variables by creating an app at login.amo.rocks (you can only do this if you have a teacher-account)
+
+There are also configurations for Parsoid which need to be set. See the next paragraph for information about that.
+
+## 5. Setting up Parsoid and VisualEditor
+
+In order to have the VisualEditor extension function you need to first install Parsoid:
+* Clone this repo somewhere on your server: https://github.com/wikimedia/parsoid/
+* Follow the instructions described in that repo's `README.md`
+
+After starting up parsoid it will tell you what port it is running on (usually 8000) and you can then configure the `$wgVirtualRestConfig['modules']['parsoid']` array in `LocalSettings.php`
 
 # Contributing
 
