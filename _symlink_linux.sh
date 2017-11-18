@@ -29,6 +29,7 @@ printf "================================================\n"
 filesToLink[0]=composer.local.json
 filesToLink[1]=favicon.ico
 filesToLink[2]=LocalSettings.php
+filesToLink[3]=composer.lock
 
 # The extensions that need to be symlinked to the target directories extensions folder
 extensionsToLink[0]=AmoClient

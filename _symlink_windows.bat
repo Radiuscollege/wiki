@@ -38,6 +38,7 @@ rem The files that need to be symlinked to the target directory:
 set filesToLink[0]=composer.local.json
 set filesToLink[1]=favicon.ico
 set filesToLink[2]=LocalSettings.php
+set filesToLink[3]=composer.lock
 
 rem The extensions that need to be symlinked to the target directories extensions folder
 set extensionsToLink[0]=AmoClient
