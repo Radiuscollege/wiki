@@ -7,6 +7,7 @@
 wfLoadExtension( 'Renameuser' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'ParserFunctions' );
+require_once "$IP/extensions/UserFunctions/UserFunctions.php";
 
 #
 # AmoClient Extension + Config
@@ -35,6 +36,15 @@ define("NS_TEACHERS", 1600);
 
 # Add namespaces.
 $wgExtraNamespaces[NS_TEACHERS] = "Docent";
+
+# Enable subpages in the main namespace
+$wgNamespacesWithSubpages[NS_MAIN] = true;
+
+# Enable subpages in the template namespace
+$wgNamespacesWithSubpages[NS_TEMPLATE] = true;
+
+# Enable subpages in the teachers namespace
+$wgNamespacesWithSubpages[NS_TEACHERS] = true;
 
 #
 # Lockdown extension + config

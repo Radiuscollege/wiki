@@ -17,10 +17,12 @@ if %errorLevel% == 0 (
 :StartSymlinking
 rem Reset if we used this batch before
 set targetDirectory=../
+set thisDirectory=./
 set extensionsDir=extensions/
 set skinsDir=skins/
 
 set /p targetDirectory= What is the relative/full path of the target directory to symlink to (trailed with a /)? [../]: 
+set /p thisDirectory= What is the relative/full path FROM the symlink to this script (trailed with a /)? [../]: 
 set /p extensionsDir= What is the extensions directory called? [extensions/]: 
 set /p skinsDir= What is the skins directory called? [skins/]: 
 
@@ -30,6 +32,7 @@ echo.
 echo Preparing symbolic linking to %targetDirectory%:
 echo - Extensions will be linked to %targetDirectory%%extensionsDir% 
 echo - Skins will be linked to %targetDirectory%%skinsDir% 
+echo (%thisDirectory will be (part of) the path from the root the symlink will have to traverse)
 echo.
 echo ================================================
 echo.
@@ -47,6 +50,7 @@ set extensionsToLink[2]=ParserFunctions
 set extensionsToLink[3]=Renameuser
 set extensionsToLink[4]=VisualEditor
 set extensionsToLink[5]=WikiEditor
+set extensionsToLink[6]=UserFunctions
 
 rem The extensions that need to be symlinked to the target directories skins folder
 set skinsToLink[0]=Vector
@@ -64,8 +68,8 @@ set x=0
 
 :SymFileLoop
 if defined filesToLink[%x%] (
-    call echo %x%: mklink "%targetDirectory%%%filesToLink[%x%]%%" "%%filesToLink[%x%]%%"
-    call mklink "%targetDirectory%%%filesToLink[%x%]%%" "%%filesToLink[%x%]%%"
+    call echo %x%: mklink "%targetDirectory%%%filesToLink[%x%]%%" "%thisDirectory%%%filesToLink[%x%]%%"
+    call mklink "%targetDirectory%%%filesToLink[%x%]%%" "%thisDirectory%%%filesToLink[%x%]%%"
     set /a "x+=1"
     GOTO :SymFileLoop
 )
@@ -76,8 +80,8 @@ set x=0
 
 :SymExtensionsLoop
 if defined extensionsToLink[%x%] (
-    call echo %x%: mklink "%targetDirectory%%extensionsDir%%%extensionsToLink[%x%]%%" "%extensionsDir%%%extensionsToLink[%x%]%%"
-    call mklink /D "%targetDirectory%%extensionsDir%%%extensionsToLink[%x%]%%" "%extensionsDir%%%extensionsToLink[%x%]%%"
+    call echo %x%: mklink /D "%targetDirectory%%extensionsDir%%%extensionsToLink[%x%]%%" "../../%thisDirectory%%extensionsDir%%%extensionsToLink[%x%]%%"
+    call mklink /D "%targetDirectory%%extensionsDir%%%extensionsToLink[%x%]%%" "../../%thisDirectory%%extensionsDir%%%extensionsToLink[%x%]%%"
     set /a "x+=1"
     GOTO :SymExtensionsLoop
 )
@@ -88,8 +92,8 @@ set x=0
 
 :SymSkinsLoop
 if defined skinsToLink[%x%] (
-    call echo %x%: mklink "%targetDirectory%%skinsDir%%%skinsToLink[%x%]%%" "%skinsDir%%%skinsToLink[%x%]%%"
-    call mklink /D "%targetDirectory%%skinsDir%%%skinsToLink[%x%]%%" "%skinsDir%%%skinsToLink[%x%]%%"
+    call echo %x%: mklink /D "%targetDirectory%%skinsDir%%%skinsToLink[%x%]%%" "../../%thisDirectory%%skinsDir%%%skinsToLink[%x%]%%"
+    call mklink /D "%targetDirectory%%skinsDir%%%skinsToLink[%x%]%%" "../../%thisDirectory%%skinsDir%%%skinsToLink[%x%]%%"
     set /a "x+=1"
     GOTO :SymSkinsLoop
 )

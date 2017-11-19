@@ -40,6 +40,7 @@ extensionsToLink[2]=ParserFunctions
 extensionsToLink[3]=Renameuser
 extensionsToLink[4]=VisualEditor
 extensionsToLink[5]=WikiEditor
+extensionsToLink[6]=UserFunctions
 
 #The extensions that need to be symlinked to the target directories extensions folder
 skinsToLink[0]=Vector
