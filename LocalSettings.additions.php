@@ -7,7 +7,14 @@
 wfLoadExtension( 'Renameuser' );
 wfLoadExtension( 'WikiEditor' );
 wfLoadExtension( 'ParserFunctions' );
+
+#
+# UserFunctions Extension + Config
+#
+
 require_once "$IP/extensions/UserFunctions/UserFunctions.php";
+$wgUFAllowedNamespaces[NS_MAIN] = true;
+$wgUFAllowedNamespaces[NS_TEMPLATE] = true;
 
 #
 # AmoClient Extension + Config
