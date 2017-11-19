@@ -54,132 +54,21 @@ Without a `LocalSettings.php` MediaWiki will prompt for configuration. Follow th
 
 After you have successfully completed configuration, you will be able to download a `LocalSettings.php`. Put this file in the root of the wiki project.
 
-Edit `LocalSettings.php` and put the following lines at the bottom of it:
+Edit `LocalSettings.php` and put the contents of `LocalSettings.additions.php` at the bottom of it.
 
-```php
-#
-# Useful third-party extensions
-#
+**Note that there are 2 global variables related to the AMO Login OpenID connect. Make sure you get the values for these variables by creating an app at login.amo.rocks (you can only do this if you have a teacher-account)**
 
-wfLoadExtension( 'Renameuser' );
-wfLoadExtension( 'WikiEditor' );
-wfLoadExtension( 'ParserFunctions' );
-
-#
-# AmoClient Extension + Config
-#
-# IMPORTANT: $wgAmoLoginClientClientSecret MUST be in LocalSettings.php OR another file which is IN the .gitignore and is loaded by MediaWiki
-#
-
-# For remote authentication (we are going to use this for AMO Login)
-$wgAmoLoginClientRemoteURL = 'https://login.amo.rocks/oauth/authorize';
-$wgAmoLoginClientRemoteTokenURL = 'https://login.amo.rocks/oauth/token';
-$wgAmoLoginClientTeachersOnly = false;
-$wgAmoLoginClientClientID = -1; // Set -1 to your app id (configured in login.amo.rocks)
-$wgAmoLoginClientClientSecret = 'secret'; // set secret to your app secret (configured in login.amo.rocks)
-
-wfLoadExtension( 'AmoClient' );
-
-#
-# Additional settings
-#
-
-# Show exceptions
-$wgShowExceptionDetails = true;
-
-# Create the teachers namespace which we will protect.
-define("NS_TEACHERS", 1600);
-
-# Add namespaces.
-$wgExtraNamespaces[NS_TEACHERS] = "Docent";
-
-#
-# Lockdown extension + config
-#
-
-require_once( "$IP/extensions/Lockdown/Lockdown.php" );
-
-# Prevent inclusion of pages from that namespace
-$wgNonincludableNamespaces[] = NS_TEACHERS;
-
-# Create teacher group
-$wgGroupPermissions['student'] = $wgGroupPermissions['user'];
-$wgGroupPermissions['teacher'] = $wgGroupPermissions['user'];
-
-# Set permissions:
-$wgNamespacePermissionLockdown[NS_TEACHERS]['*'] = array('teacher');
-
-$wgNamespacePermissionLockdown['*']['move'] = array('teacher');
-$wgNamespacePermissionLockdown['*']['edit'] = array('teacher');
-$wgNamespacePermissionLockdown['*']['read'] = array('teacher', 'student');
-
-$wgSpecialPageLockdown['Export'] = array('teacher');
-$wgSpecialPageLockdown['Recentchanges'] = array('teacher');
-$wgActionLockdown['history'] = array('teacher');
-
-#
-# Custom Skins
-#
-
-# Radius AMO Skin
-wfLoadSkin( 'RadiusAMO' );
-
-#
-# VisualEditor Extension + Config
-#
-
-wfLoadExtension( 'VisualEditor' );
-
-// Enable by default for everybody
-$wgDefaultUserOptions['visualeditor-enable'] = 1;
-
-// Optional: Set VisualEditor as the default for anonymous users
-// otherwise they will have to switch to VE
-// $wgDefaultUserOptions['visualeditor-editor'] = "visualeditor";
-
-// Don't allow users to disable it
-$wgHiddenPrefs[] = 'visualeditor-enable';
-
-// OPTIONAL: Enable VisualEditor's experimental code features
-#$wgDefaultUserOptions['visualeditor-enable-experimental'] = 1;
-
-# Supported skins
-$wgVisualEditorSupportedSkins = [ 'vector', 'radiusamo' ];
-
-# Namespaces VisualEditor will work in
-$wgVisualEditorAvailableNamespaces = [
-    NS_MAIN => true,
-    NS_USER => true,
-    NS_USER_TALK => true,
-    NS_TEACHERS => true,
-    NS_HELP => true,
-    NS_HELP_TALK => true,
-    NS_TALK => true,
-];
-
-# Link VisualEditor with parsoid
-$wgVirtualRestConfig['modules']['parsoid'] = array(
-    // URL to the Parsoid instance
-    // Use port 8142 if you use the Debian package
-    'url' => 'http://localhost:8000',
-    // Parsoid "domain", see below (optional)
-    'domain' => 'localhost',
-    // Parsoid "prefix", see below (optional)
-    'prefix' => 'localhost'
-);
-```
-
-Note that there are 2 global variables related to the AMO Login OpenID connect. Make sure you get the values for these variables by creating an app at login.amo.rocks (you can only do this if you have a teacher-account)
-
-There are also configurations for Parsoid which need to be set. See the next paragraph for information about that.
+**There are also configurations for Parsoid which need to be set. See the next paragraph for information about that.**
 
 ## 5. Setting up Parsoid and VisualEditor
 
-In order to have the VisualEditor extension function you need to first install Parsoid:
-* Clone this repo somewhere on your server: https://github.com/wikimedia/parsoid/
-* Follow the instructions described in that repo's `README.md`
+In order to have the VisualEditor extension function you need to first install Parsoid following the instructions here: https://www.mediawiki.org/wiki/Parsoid/Setup
 
-After starting up parsoid it will tell you what port it is running on (usually 8000) and you can then configure the `$wgVirtualRestConfig['modules']['parsoid']` array in `LocalSettings.php`
+After that run parsoid.
+
+After starting up parsoid it will tell you what port it is running on (usually 8000 or 8142) and you can then configure the `$wgVirtualRestConfig['modules']['parsoid']` array in `LocalSettings.php`
+
+_If you have a private wiki, see [this article](https://www.mediawiki.org/wiki/Extension:VisualEditor#Linking_with_Parsoid_in_private_wikis) for instructions._
 
 # Contributing
 
