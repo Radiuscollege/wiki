@@ -1,0 +1,43 @@
+[submodule "extensions/AmoClient"]
+	path = extensions/AmoClient
+	url = https://github.com/TheJjokerR/amoclient-mediawiki.git
+
+[submodule "extensions/Lockdown"]
+	path = extensions/Lockdown
+	url = https://github.com/wikimedia/mediawiki-extensions-Lockdown.git
+
+[submodule "extensions/ParserFunctions"]
+	path = extensions/ParserFunctions
+	url = https://github.com/wikimedia/mediawiki-extensions-ParserFunctions.git
+
+[submodule "extensions/Renameuser"]
+	path = extensions/Renameuser
+	url = https://github.com/wikimedia/mediawiki-extensions-Renameuser.git
+
+[submodule "extensions/VisualEditor"]
+	path = extensions/VisualEditor
+	url = https://github.com/wikimedia/mediawiki-extensions-VisualEditor.git
+
+[submodule "extensions/WikiEditor"]
+	path = extensions/WikiEditor
+	url = https://github.com/wikimedia/mediawiki-extensions-WikiEditor.git
+
+[submodule "skins/Vector"]
+	path = skins/Vector
+	url = https://github.com/wikimedia/mediawiki-skins-Vector.git
+
+[submodule "skins/MonoBook"]
+	path = skins/MonoBook
+	url = https://github.com/wikimedia/mediawiki-skins-MonoBook.git
+
+[submodule "skins/Modern"]
+	path = skins/Modern
+	url = https://github.com/wikimedia/mediawiki-skins-Modern.git
+
+[submodule "skins/CologneBlue"]
+	path = skins/CologneBlue
+	url = https://github.com/wikimedia/mediawiki-skins-CologneBlue.git
+
+[submodule "skins/RadiusAMO"]
+	path = skins/RadiusAMO
+	url = https://github.com/TheJjokerR/amoskin-mediawiki.git
