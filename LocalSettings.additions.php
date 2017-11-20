@@ -44,6 +44,13 @@ define("NS_TEACHERS", 1600);
 # Add namespaces.
 $wgExtraNamespaces[NS_TEACHERS] = "Docent";
 
+# Prevent inclusion of pages from that namespace
+$wgNonincludableNamespaces[] = NS_TEACHERS;
+
+# Create teacher group
+$wgGroupPermissions['student'] = $wgGroupPermissions['user'];
+$wgGroupPermissions['teacher'] = $wgGroupPermissions['user'];
+
 # Enable subpages in the main namespace
 $wgNamespacesWithSubpages[NS_MAIN] = true;
 
@@ -59,19 +66,13 @@ $wgNamespacesWithSubpages[NS_TEACHERS] = true;
 
 require_once( "$IP/extensions/Lockdown/Lockdown.php" );
 
-# Prevent inclusion of pages from that namespace
-$wgNonincludableNamespaces[] = NS_TEACHERS;
-
-# Create teacher group
-$wgGroupPermissions['student'] = $wgGroupPermissions['user'];
-$wgGroupPermissions['teacher'] = $wgGroupPermissions['user'];
-
 # Set permissions:
-$wgNamespacePermissionLockdown[NS_TEACHERS]['*'] = array('teacher');
-
 $wgNamespacePermissionLockdown['*']['move'] = array('teacher');
 $wgNamespacePermissionLockdown['*']['edit'] = array('teacher');
 $wgNamespacePermissionLockdown['*']['read'] = array('teacher', 'student');
+
+$wgNamespacePermissionLockdown[NS_TEACHERS]['*'] = array('teacher');
+$wgNamespacePermissionLockdown[NS_TEACHERS]['read'] = array('teacher');
 
 $wgSpecialPageLockdown['Export'] = array('teacher');
 $wgSpecialPageLockdown['Recentchanges'] = array('teacher');
