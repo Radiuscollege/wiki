@@ -4,7 +4,7 @@
 
 [submodule "extensions/Lockdown"]
 	path = extensions/Lockdown
-	url = https://github.com/wikimedia/mediawiki-extensions-Lockdown.git
+	url = https://github.com/TheJjokerR/mediawiki-extensions-Lockdown.git
 
 [submodule "extensions/ParserFunctions"]
 	path = extensions/ParserFunctions
@@ -12,7 +12,7 @@
 
 [submodule "extensions/UserFunctions"]
 	path = extensions/UserFunctions
-	url = https://github.com/TheJjokerR/mediawiki-extensions-Lockdown.git
+	url = https://github.com/wikimedia/mediawiki-extensions-UserFunctions.git
 
 [submodule "extensions/Renameuser"]
 	path = extensions/Renameuser
