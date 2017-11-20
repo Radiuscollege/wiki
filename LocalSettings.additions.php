@@ -71,12 +71,35 @@ $wgNamespacePermissionLockdown['*']['move'] = array('teacher');
 $wgNamespacePermissionLockdown['*']['edit'] = array('teacher');
 $wgNamespacePermissionLockdown['*']['read'] = array('teacher', 'student');
 
+# Only allow teachers to query the api for pages
+$wgNamespacePermissionLockdown['*']['api_read'] = array('teacher');
+
+$wgNamespacePermissionLockdown[NS_TALK]['edit'] = array('teacher', 'student');
+$wgNamespacePermissionLockdown[NS_USER]['edit'] = array('teacher', 'student');
+$wgNamespacePermissionLockdown[NS_USER_TALK]['edit'] = array('teacher', 'student');
+
+# Allow teachers and students to query the api for talk and user pages
+$wgNamespacePermissionLockdown[NS_TALK]['api_read'] = array('teacher', 'student');
+$wgNamespacePermissionLockdown[NS_USER]['api_read'] = array('teacher', 'student');
+$wgNamespacePermissionLockdown[NS_USER_TALK]['api_read'] = array('teacher', 'student');
+
+# Only allow teachers to do anything with the teacher namespace
 $wgNamespacePermissionLockdown[NS_TEACHERS]['*'] = array('teacher');
+
+# Specifically say only teachers can read teachers pages, otherwise '$wgNamespacePermissionLockdown['*']['read'] = array('teacher', 'student');' will allow students to read it as well.
 $wgNamespacePermissionLockdown[NS_TEACHERS]['read'] = array('teacher');
 
 $wgSpecialPageLockdown['Export'] = array('teacher');
 $wgSpecialPageLockdown['Recentchanges'] = array('teacher');
+
+# Block history and edit completely for all namespaces except the user and user talk pages
+$wgActionLockdown['move'] = array('teacher');
 $wgActionLockdown['history'] = array('teacher');
+$wgActionLockdown['edit'] = array('teacher');
+
+$wgNamespaceActionLockdown[NS_TALK]['*'] = array('teacher', 'student');
+$wgNamespaceActionLockdown[NS_USER]['*'] = array('teacher', 'student');
+$wgNamespaceActionLockdown[NS_USER_TALK]['*'] = array('teacher', 'student');
 
 #
 # Custom Skins

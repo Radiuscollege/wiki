@@ -12,7 +12,7 @@
 
 [submodule "extensions/UserFunctions"]
 	path = extensions/UserFunctions
-	url = https://github.com/wikimedia/mediawiki-extensions-UserFunctions.git
+	url = https://github.com/TheJjokerR/mediawiki-extensions-Lockdown.git
 
 [submodule "extensions/Renameuser"]
 	path = extensions/Renameuser
