@@ -108,6 +108,7 @@ $wgNamespaceActionLockdown[NS_USER_TALK]['*'] = array('teacher', 'student');
 # Radius AMO Skin
 wfLoadSkin( 'RadiusAMO' );
 
+/*
 #
 # VisualEditor Extension + Config
 #
@@ -151,3 +152,4 @@ $wgVirtualRestConfig['modules']['parsoid'] = array(
 // Parsoid "prefix", see below (optional)
 'prefix' => 'localhost'
 );
+*/
